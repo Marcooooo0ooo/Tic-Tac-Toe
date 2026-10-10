@@ -1,0 +1,242 @@
+:root {
+  --navy: #1b1f5e;
+  --blue: #1581c4;
+  --pink: #e0245e;
+  --yellow: #ffd166;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px 16px 40px;
+  text-align: center;
+  font-family: "Fredoka", "Trebuchet MS", sans-serif;
+  color: var(--navy);
+  background: #7dd3fc url("images/background.svg") center / cover no-repeat fixed;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.8rem, 8vw, 4.4rem);
+  color: var(--navy);
+  text-shadow: 0 3px 0 rgba(255, 255, 255, 0.8);
+}
+
+.status {
+  display: inline-block;
+  margin: 0 0 24px;
+  padding: 8px 26px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background: var(--white);
+  border-radius: 999px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.arena {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.character {
+  width: 190px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12);
+}
+
+.character img {
+  width: 140px;
+  height: auto;
+}
+
+.character p {
+  margin: 6px 0 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 96px);
+  grid-template-rows: repeat(3, 96px);
+  gap: 8px;
+  padding: 12px;
+  background: var(--navy);
+  border-radius: 24px;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cell {
+  padding: 0;
+  font-family: inherit;
+  font-size: 3rem;
+  font-weight: 700;
+  background: #f1eeff;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background: #ddd5ff;
+}
+
+.cell.X {
+  color: var(--pink);
+  cursor: default;
+}
+
+.cell.O {
+  color: var(--blue);
+  cursor: default;
+}
+
+.cell.winning {
+  background: var(--yellow);
+}
+
+.controls {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px 24px;
+  margin-top: 28px;
+  padding: 14px 22px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+}
+
+.difficulty {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.btn {
+  padding: 10px 22px;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(2px);
+}
+
+.btn:focus-visible {
+  outline: 4px solid #ff5d8f;
+  outline-offset: 3px;
+}
+
+.easy { background: #b8f2e6; }
+.hard { background: #ffc2d6; }
+.restart { background: var(--yellow); }
+
+.easy.selected {
+  background: #2ec4b6;
+  box-shadow: 0 0 0 4px var(--navy);
+}
+
+.hard.selected {
+  background: #ff5d8f;
+  box-shadow: 0 0 0 4px var(--navy);
+}
+
+.result {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(27, 31, 94, 0.6);
+}
+
+.hidden {
+  display: none;
+}
+
+.result-box {
+  width: min(90vw, 380px);
+  padding: 30px 24px;
+  border: 6px solid;
+  border-radius: 28px;
+  animation: pop 0.3s ease-out;
+}
+
+.result-emoji {
+  margin: 0;
+  font-size: 4.5rem;
+}
+
+.result-box h2 {
+  margin: 0 0 8px;
+  font-size: 2.4rem;
+}
+
+.result-box p {
+  font-size: 1.2rem;
+}
+
+.result.win .result-box {
+  background: linear-gradient(#fff6c2, #ffe066);
+  border-color: #ffb703;
+  color: #5a4300;
+}
+
+.result.lose .result-box {
+  background: #2b2f77;
+  border-color: #ff5d8f;
+  color: var(--white);
+}
+
+.result.draw .result-box {
+  background: #e8f4ff;
+  border-color: #4cc9f0;
+  color: var(--navy);
+}
+
+@keyframes pop {
+  from { transform: scale(0.6); }
+  to   { transform: scale(1); }
+}
+
+@media (max-width: 700px) {
+  .board {
+    order: -1;
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+  }
+
+  .character {
+    width: 150px;
+  }
+
+  .character img {
+    width: 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .result-box {
+    animation: none;
+  }
+}

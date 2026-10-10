@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tic-Tac-Toe</title>
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Tic-Tac-Toe</h1>
+  <p id="status" class="status">Your turn (X)</p>
+
+  <div class="arena">
+
+    <div class="character">
+      <img src="images/player.svg" alt="Cartoon kid">
+      <p>You (X)</p>
+    </div>
+
+    <div class="board">
+      <button class="cell" id="cell-0"></button>
+      <button class="cell" id="cell-1"></button>
+      <button class="cell" id="cell-2"></button>
+      <button class="cell" id="cell-3"></button>
+      <button class="cell" id="cell-4"></button>
+      <button class="cell" id="cell-5"></button>
+      <button class="cell" id="cell-6"></button>
+      <button class="cell" id="cell-7"></button>
+      <button class="cell" id="cell-8"></button>
+    </div>
+
+    <div class="character">
+      <img src="images/robot.svg" alt="Cartoon robot">
+      <p>Robot (O)</p>
+    </div>
+
+  </div>
+
+  <div class="controls">
+    <div class="difficulty">
+      <span>Difficulty</span>
+      <button class="btn easy" id="btn-easy">Easy</button>
+      <button class="btn hard" id="btn-hard">Hard</button>
+    </div>
+    <button class="btn restart" id="restart">New game</button>
+  </div>
+
+  <div class="result hidden" id="result">
+    <div class="result-box">
+      <p class="result-emoji" id="result-emoji"></p>
+      <h2 id="result-title"></h2>
+      <p id="result-text"></p>
+      <button class="btn restart" id="play-again">Play again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
